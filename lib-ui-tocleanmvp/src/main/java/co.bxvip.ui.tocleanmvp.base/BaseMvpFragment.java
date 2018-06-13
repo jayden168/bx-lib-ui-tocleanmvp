@@ -1,8 +1,5 @@
 package co.bxvip.ui.tocleanmvp.base;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.view.View;
 
 /**
  * <pre>
@@ -17,20 +14,21 @@ public abstract class BaseMvpFragment<P extends BasePresenter> extends BaseFragm
     public P presenter;
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        initPresenter();
-        super.onActivityCreated(savedInstanceState);
-        if (presenter == null) {
-            throw new RuntimeException("Presenter Is Empty Please At initPresenter() Init");
-        }
-        presenter.start();
+    public void initView() {
+
     }
 
-//    @Override
-//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-//
-//    }
+    @Override
+    protected void justForInitPresenter() {
+        super.justForInitPresenter();
+        initPresenter();
+    }
+
+    @Override
+    protected void lazyLoad() {
+        super.lazyLoad();
+        presenter.start();
+    }
 
     protected abstract void initPresenter();
 }

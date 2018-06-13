@@ -25,9 +25,9 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
      */
     private View mRootView;
 
-    protected boolean isVisible;
-    private boolean isFirst = true;
-    private boolean isPrepared;
+    // lazy
+    private boolean isViewCreated;
+    private boolean isLoadDataCompleted;
 
     @Override
     public void onAttach(Context context) {
@@ -45,17 +45,32 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
             }
         } else {
             mRootView = inflater.inflate(getLayoutResouceId(), container, false);
+            initView();
+            initDatas();
+            initEvents();
+            justForInitPresenter();
+            isViewCreated = true;
         }
         return mRootView;
     }
 
     @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser && isViewCreated && !isLoadDataCompleted) {
+            lazyLoad();
+            isLoadDataCompleted = true;
+        }
+    }
+
+
+    @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        isPrepared = true;
-        initView();
-        initEvents();
-        lazyLoad();
+        if (getUserVisibleHint()) {
+            lazyLoad();
+            isLoadDataCompleted = true;
+        }
     }
 
     /**
@@ -74,18 +89,29 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     /**
      * 初始化监听事件
      */
-    protected void initEvents(){
+    protected void initDatas() {
+
+    }
+
+    /**
+     * 初始化监听事件
+     */
+    protected void initEvents() {
+
+    }
+
+    protected void justForInitPresenter() {
 
     }
 
     /**
      * 获取数据
      */
-    protected  void getData(){
+    protected void lazyLoad() {
 
     }
 
-    protected void performClick(View view){
+    protected void performClick(View view) {
 
     }
 
@@ -117,27 +143,11 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     public void onClick(View v) {
         performClick(v);
     }
-//
-//    @VisibleForTesting
-//    public IdlingResource getCountingIdlingResource() {
-//        return EspressoIdlingResource.getIdlingResource();
-//    }
-
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        if (getUserVisibleHint()) {
-            isVisible = true;
-            lazyLoad();
-        } else {
-            isVisible = false;
-        }
-    }
 
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-        if(hidden){
+        if (hidden) {
             onFragmentPause();
         } else {
             onFragmentResume();
@@ -147,22 +157,14 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     /**
      * 当Fragment可见时调用
      */
-    public void onFragmentResume(){
+    public void onFragmentResume() {
 
     }
 
     /**
      * 当Fragment不可见时调用
      */
-    public void onFragmentPause(){
+    public void onFragmentPause() {
 
-    }
-
-    protected void lazyLoad() {
-        if (!isPrepared || !isVisible || !isFirst) {
-            return;
-        }
-        getData();
-        isFirst = false;
     }
 }
