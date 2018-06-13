@@ -26,7 +26,8 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     private View mRootView;
 
     // lazy
-    private boolean isViewCreated;
+    private boolean isViewCreated; // view 创建
+    private boolean isInitView; // view 初始
     private boolean isLoadDataCompleted;
 
     @Override
@@ -45,10 +46,6 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
             }
         } else {
             mRootView = inflater.inflate(getLayoutResouceId(), container, false);
-            initView();
-            initDatas();
-            initEvents();
-            justForInitPresenter();
             isViewCreated = true;
         }
         return mRootView;
@@ -57,7 +54,7 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser && isViewCreated && !isLoadDataCompleted) {
+        if (isVisibleToUser && isInitView && isViewCreated && !isLoadDataCompleted) {
             lazyLoad();
             isLoadDataCompleted = true;
         }
@@ -67,6 +64,13 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        if (!isInitView){
+            initView();
+            initDatas();
+            initEvents();
+            justForInitPresenter();
+            isInitView = true;
+        }
         if (getUserVisibleHint()) {
             lazyLoad();
             isLoadDataCompleted = true;

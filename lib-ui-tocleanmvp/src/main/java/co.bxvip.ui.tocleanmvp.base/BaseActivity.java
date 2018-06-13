@@ -18,8 +18,8 @@ import android.view.WindowManager;
 
 import co.bxvip.skin.SkinManager;
 
-import com.qihoo360.replugin.loader.a.PluginFragmentActivity;
-// import android.support.v4.app.FragmentActivity;
+//import com.qihoo360.replugin.loader.a.PluginFragmentActivity;
+ import android.support.v4.app.FragmentActivity;
 
 /**
  * <pre>
@@ -29,7 +29,7 @@ import com.qihoo360.replugin.loader.a.PluginFragmentActivity;
  * </pre>
  */
 
-public abstract class BaseActivity extends PluginFragmentActivity implements IBaseAF {
+public abstract class BaseActivity extends FragmentActivity implements IBaseAF {
     protected String TAG = this.getClass().getName();
     protected Context mContext;
 
