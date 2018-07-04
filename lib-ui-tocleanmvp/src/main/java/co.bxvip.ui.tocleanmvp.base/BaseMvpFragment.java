@@ -31,4 +31,13 @@ public abstract class BaseMvpFragment<P extends BasePresenter> extends BaseFragm
     }
 
     protected abstract void initPresenter();
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (presenter!=null){
+            presenter.onDestory();
+            presenter = null;
+        }
+    }
 }
