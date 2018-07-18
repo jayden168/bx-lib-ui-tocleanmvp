@@ -17,9 +17,6 @@ import android.view.WindowManager;
 
 import co.bxvip.skin.SkinManager;
 
-import com.qihoo360.replugin.loader.a.PluginFragmentActivity;
-// import android.support.v4.app.FragmentActivity;
-
 /**
  * <pre>
  *     author: vic
@@ -28,11 +25,10 @@ import com.qihoo360.replugin.loader.a.PluginFragmentActivity;
  * </pre>
  */
 
-//import com.qihoo360.replugin.loader.a.PluginFragmentActivity;
-//public abstract class BaseActivity extends PluginFragmentActivity implements IBaseAF {
-import android.support.v4.app.FragmentActivity;
-
-public abstract class BaseActivity extends FragmentActivity implements IBaseAF {
+import com.qihoo360.replugin.loader.a.PluginFragmentActivity;
+public abstract class BaseActivity extends PluginFragmentActivity implements IBaseAF {
+//import android.support.v4.app.FragmentActivity;
+//public abstract class BaseActivity extends FragmentActivity implements IBaseAF {
     protected String TAG = this.getClass().getName();
     protected Context mContext;
 
