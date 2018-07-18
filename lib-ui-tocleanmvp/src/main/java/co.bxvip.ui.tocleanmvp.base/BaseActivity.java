@@ -15,7 +15,6 @@ import android.view.Window;
 import android.view.WindowManager;
 
 
-
 import co.bxvip.skin.SkinManager;
 
 import com.qihoo360.replugin.loader.a.PluginFragmentActivity;
@@ -29,16 +28,20 @@ import com.qihoo360.replugin.loader.a.PluginFragmentActivity;
  * </pre>
  */
 
-public abstract class BaseActivity extends PluginFragmentActivity implements IBaseAF {
+//import com.qihoo360.replugin.loader.a.PluginFragmentActivity;
+//public abstract class BaseActivity extends PluginFragmentActivity implements IBaseAF {
+import android.support.v4.app.FragmentActivity;
+
+public abstract class BaseActivity extends FragmentActivity implements IBaseAF {
     protected String TAG = this.getClass().getName();
     protected Context mContext;
 
     @Override
     public Resources getResources() {
         Resources res = super.getResources();
-        Configuration config=new Configuration();
+        Configuration config = new Configuration();
         config.setToDefaults();
-        res.updateConfiguration(config,res.getDisplayMetrics() );
+        res.updateConfiguration(config, res.getDisplayMetrics());
         return res;
     }
 

@@ -65,15 +65,15 @@ public abstract class BaseFragment extends Fragment implements View.OnClickListe
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if (!isInitView){
+            isInitView = true;
             initView();
+            justForInitPresenter();
             initDatas();
             initEvents();
-            justForInitPresenter();
-            isInitView = true;
         }
         if (getUserVisibleHint()) {
-            lazyLoad();
             isLoadDataCompleted = true;
+            lazyLoad();
         }
     }
 

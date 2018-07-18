@@ -27,7 +27,8 @@ public abstract class BaseMvpFragment<P extends BasePresenter> extends BaseFragm
     @Override
     protected void lazyLoad() {
         super.lazyLoad();
-        presenter.start();
+        if (presenter != null)
+            presenter.start();
     }
 
     protected abstract void initPresenter();
@@ -35,7 +36,7 @@ public abstract class BaseMvpFragment<P extends BasePresenter> extends BaseFragm
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (presenter!=null){
+        if (presenter != null) {
             presenter.onDestory();
             presenter = null;
         }
