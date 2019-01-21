@@ -53,7 +53,7 @@ public abstract class BaseActivity extends PluginFragmentActivity implements IBa
         initParams(savedInstanceState);
 
         View viewContent = getRootView();
-        if (getRootView() == null) {
+        if (viewContent == null) {
             int layotId = bindLayout();
             if (layotId > 0) {
                 XmlResourceParser layout = mContext.getResources().getLayout(layotId);
