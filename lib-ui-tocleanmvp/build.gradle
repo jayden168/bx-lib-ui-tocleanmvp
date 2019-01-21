@@ -39,15 +39,15 @@ dependencies {
     provided repluginplugin
 }
 
-task androidJavadocs(type: Javadoc) {
-    failOnError false
-    source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-}
-task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
-    classifier = 'javadoc'
-    from androidJavadocs.destinationDir
-}
+//task androidJavadocs(type: Javadoc) {
+//    failOnError false
+//    source = android.sourceSets.main.java.srcDirs
+//    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+//}
+//task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
+//    classifier = 'javadoc'
+//    from androidJavadocs.destinationDir
+//}
 task androidSourcesJar(type: Jar) {
     classifier = 'sources'
     from android.sourceSets.main.java.sourceFiles
@@ -55,5 +55,5 @@ task androidSourcesJar(type: Jar) {
 
 artifacts {
     archives androidSourcesJar
-    archives androidJavadocsJar
+//    archives androidJavadocsJar
 }
