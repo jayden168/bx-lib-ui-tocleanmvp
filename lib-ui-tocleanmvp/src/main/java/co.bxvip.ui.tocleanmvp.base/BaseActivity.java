@@ -25,10 +25,10 @@ import co.bxvip.skin.SkinManager;
  * </pre>
  */
 
-//import com.qihoo360.replugin.loader.a.PluginFragmentActivity;
-//public abstract class BaseActivity extends PluginFragmentActivity implements IBaseAF {
-import android.support.v4.app.FragmentActivity;
-public abstract class BaseActivity extends FragmentActivity implements IBaseAF {
+import com.qihoo360.replugin.loader.a.PluginFragmentActivity;
+public abstract class BaseActivity extends PluginFragmentActivity implements IBaseAF {
+//import android.support.v4.app.FragmentActivity;
+//public abstract class BaseActivity extends FragmentActivity implements IBaseAF {
     protected String TAG = this.getClass().getName();
     protected Context mContext;
 
