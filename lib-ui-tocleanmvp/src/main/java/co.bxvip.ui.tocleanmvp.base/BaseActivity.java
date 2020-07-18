@@ -1,8 +1,8 @@
 package co.bxvip.ui.tocleanmvp.base;
 
 import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
+//import android.content.res.Configuration;
+//import android.content.res.Resources;
 import android.content.res.XmlResourceParser;
 import android.graphics.Color;
 import android.os.Build;
@@ -26,25 +26,28 @@ import co.bxvip.skin.SkinManager;
  */
 
 import com.qihoo360.replugin.loader.a.PluginFragmentActivity;
+
 public abstract class BaseActivity extends PluginFragmentActivity implements IBaseAF {
-//import android.support.v4.app.FragmentActivity;
+    //import android.support.v4.app.FragmentActivity;
 //public abstract class BaseActivity extends FragmentActivity implements IBaseAF {
     protected String TAG = this.getClass().getName();
     protected Context mContext;
 
-    @Override
-    public Resources getResources() {
-        Resources res = super.getResources();
-        Configuration config = new Configuration();
-        config.setToDefaults();
-        res.updateConfiguration(config, res.getDisplayMetrics());
-        return res;
-    }
+//    @Override
+//    public Resources getResources() {
+//        Resources res = super.getResources();
+//        Configuration config = new Configuration();
+//        config.setToDefaults();
+//        res.updateConfiguration(config, res.getDisplayMetrics());
+//        return res;
+//    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext = this;
+
+        MultiLanguageUtils.changeLanguage(this);
         if (getSetChangeSkinUse()) {
             SkinManager.getInstance().register(this);
         }
