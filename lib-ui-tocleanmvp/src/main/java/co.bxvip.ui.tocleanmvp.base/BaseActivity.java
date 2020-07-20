@@ -24,13 +24,14 @@ import co.bxvip.skin.SkinManager;
  *     desc  : 最底层BaseActivity
  * </pre>
  */
-// 2. plugin 再 到plugin
-import com.qihoo360.replugin.loader.a.PluginFragmentActivity;
-
-public abstract class BaseActivity extends PluginFragmentActivity implements IBaseAF {
+//// 2. plugin 再 到plugin
+//import com.qihoo360.replugin.loader.a.PluginFragmentActivity;
+//
+//public abstract class BaseActivity extends PluginFragmentActivity implements IBaseAF {
 // 1. notplugin 开放 先创建
-//    import android.support.v4.app.FragmentActivity;
-//public abstract class BaseActivity extends FragmentActivity implements IBaseAF {
+import android.support.v4.app.FragmentActivity;
+
+public abstract class BaseActivity extends FragmentActivity implements IBaseAF {
     protected String TAG = this.getClass().getName();
     protected Context mContext;
 
