@@ -8,7 +8,11 @@ import android.os.LocaleList;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 
+import com.qihoo360.replugin.RePlugin;
+
 import java.util.Locale;
+
+import static java.sql.DriverManager.println;
 
 
 /**
@@ -157,6 +161,21 @@ public class MultiLanguageUtils {
             } else {
                 MultiLanguageUtils.changeLanguage(context, "en", "US");
             }
+        }
+    }
+
+    /**
+     * 初始化语言信息
+     */
+    public static void initLanguageInfo() {
+        String language = (String) SPUtils.get(RePlugin.getHostContext(), "LANGUAGE_TYPE_ID", "");
+        //切换语言
+        if (language == TYPE_ID_CN) {
+            //中文
+            MultiLanguageUtils.changeLanguage(RePlugin.getPluginContext(), LANG_CN, "ZH");
+        } else if (language == TYPE_ID_EN) {
+            //英文
+            MultiLanguageUtils.changeLanguage(RePlugin.getPluginContext(), LANG_EN, "US");
         }
     }
 }
