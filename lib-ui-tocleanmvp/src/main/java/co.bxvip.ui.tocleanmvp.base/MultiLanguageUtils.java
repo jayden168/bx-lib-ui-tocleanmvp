@@ -170,10 +170,10 @@ public class MultiLanguageUtils {
     public static void initLanguageInfo() {
         String language = (String) SPUtils.get(RePlugin.getHostContext(), "LANGUAGE_TYPE_ID", "");
         //切换语言
-        if (language == TYPE_ID_CN) {
+        if (language.equals(TYPE_ID_CN)) {
             //中文
             MultiLanguageUtils.changeLanguage(RePlugin.getPluginContext(), LANG_CN, "ZH");
-        } else if (language == TYPE_ID_EN) {
+        } else if (language.equals(TYPE_ID_EN)) {
             //英文
             MultiLanguageUtils.changeLanguage(RePlugin.getPluginContext(), LANG_EN, "US");
         }
