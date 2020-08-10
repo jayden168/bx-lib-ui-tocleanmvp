@@ -61,14 +61,26 @@ public class MultiLanguageUtils {
      * 获取请求参数的类型ID
      * 1:中文 2:英文
      */
-    public static String getLanguageTypeId(Context context) {
-        String language = (String) SPUtils.get(context, SPUtils.SP_LANGUAGE, "");
-        //检查用户是否设置了语言
-        if (TextUtils.isEmpty(language)) {
-            //根据系统的语言来
-            return isChinaLang() ? TYPE_ID_CN : TYPE_ID_EN;
-        }
-        return language.equals(LANG_CN) ? TYPE_ID_CN : TYPE_ID_EN;
+    public static String getLanguageTypeId() {
+        return (String) SPUtils.get(RePlugin.getHostContext(), "LANGUAGE_TYPE_ID", "");
+    }
+
+    /**
+     * 判断是不是中文 根据typeid
+     *
+     * @return
+     */
+    public static Boolean isChinaFromTypeId() {
+        return getLanguageTypeId().equals(TYPE_ID_CN);
+    }
+
+    /**
+     * 判断是不是英文 根据typeid
+     *
+     * @return
+     */
+    public static Boolean isEnglishFromTypeId() {
+        return getLanguageTypeId().equals(TYPE_ID_EN);
     }
 
     /**
