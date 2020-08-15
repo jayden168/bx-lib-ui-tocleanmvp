@@ -8,13 +8,11 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-
-
+import static co.bxvip.ui.tocleanmvp.base.MultiLanguageUtilsKt.initLanguageInfo;
 import co.bxvip.skin.SkinManager;
 
 /**
@@ -25,13 +23,14 @@ import co.bxvip.skin.SkinManager;
  * </pre>
  */
 // 2. plugin 再 到plugin
-import com.qihoo360.replugin.loader.a.PluginFragmentActivity;
-
-public abstract class BaseActivity extends PluginFragmentActivity implements IBaseAF {
-    // 1. notplugin 开放 先创建
-//import android.support.v4.app.FragmentActivity;
+//import com.qihoo360.replugin.loader.a.PluginFragmentActivity;
 //
-//public abstract class BaseActivity extends FragmentActivity implements IBaseAF {
+//public abstract class BaseActivity extends PluginFragmentActivity implements IBaseAF {
+
+    // 1. notplugin 开放 先创建
+import android.support.v4.app.FragmentActivity;
+
+public abstract class BaseActivity extends FragmentActivity implements IBaseAF {
     protected String TAG = this.getClass().getName();
     protected Context mContext;
 
@@ -49,7 +48,7 @@ public abstract class BaseActivity extends PluginFragmentActivity implements IBa
         super.onCreate(savedInstanceState);
         mContext = this;
         //初始化语言信息
-        MultiLanguageUtils.initLanguageInfo();
+        initLanguageInfo();
         if (getSetChangeSkinUse()) {
             SkinManager.getInstance().register(this);
         }
