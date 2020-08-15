@@ -12,7 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import static co.bxvip.ui.tocleanmvp.base.MultiLanguageUtilsKt.initLanguageInfo;
+
+import static co.bxvip.ui.tocleanmvp.base.MultiLanguageUtils.initLanguageInfo;
 import co.bxvip.skin.SkinManager;
 
 /**
