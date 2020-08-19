@@ -32,11 +32,13 @@ android {
     }
 }
 
-
 dependencies {
     compileOnly androidSupport
     provided "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     provided repluginplugin
+    compileOnly gson
+    compileOnly okhttp
+    compileOnly "co.bxvip.android.lib:lib-http-aidl:1.0.0-18.6"
 }
 
 //task androidJavadocs(type: Javadoc) {

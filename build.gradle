@@ -24,6 +24,14 @@ allprojects {
         google()
         jcenter()
         maven { url 'https://jitpack.io' }
+        maven {
+            url 'http://nexus.bxvip.co:8081/repository/bxvip-releases/'
+            credentials {
+                username 'bxvip'
+                password 'admin123'
+            }
+
+        }
     }
 }
 
