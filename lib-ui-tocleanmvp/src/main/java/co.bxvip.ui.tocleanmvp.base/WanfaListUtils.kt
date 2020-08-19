@@ -189,7 +189,7 @@ fun checkTradTypeIsValid(): MutableList<S3TradType>? {
 
 /**
  * 获取当前交易类型语言ID
- * @return 1:中文 2:英文
+ * @return 1为英文 0中文
  */
 fun getTradTypeLanguageType(): String {
     return (getLanguageType().toInt() - 1).toString()
